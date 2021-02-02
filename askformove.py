@@ -24,19 +24,19 @@ bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS)
 #Config
 
 # Paste your discord token from http://discord.com/developers/applications
-TOKEN = 'ODA1MTc3MDQwOTk1MjIxNTM0.YBXFjg.XZNRq8-gPN-4DVxGPo_ceEqAD3Q'
+TOKEN = 'YOUR_BOT_TOKEN_HERE'
 
 # Change these variables for your Server
 # If you dont know where to find the Server ID, see this: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
 
 # Paste the SERVER ID here
-server_id = 792468889707085856
+server_id = YOUR_SERVER_ID_HERE
 
 # Paste the ID of the channel, where you want users to join
-channel_id = 793240226700722197
+channel_id = YOUR_SERVER_ID_HERE
 
 # A list of all of your Staff Members seperated by ",". This may be replaced in a Future Version
-staff_ids = [781869496759484426]
+staff_ids = [STAFF_ID_01, STAFF_ID_02]
 
 # Whether the bot should use the staff_ids list, or build the list automatically based on the "Move Members" permission.
 custom_list = False
