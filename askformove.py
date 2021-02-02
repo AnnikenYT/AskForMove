@@ -80,12 +80,4 @@ async def on_voice_state_update(member, before, after):
                     dm = await staff_member.create_dm()
                     await dm.send(move_message.format(member))
 
-        # for staff_id in staff:
-        #     staff_user = bot.get_user(staff_id)
-        #     print(str(staff_member))
-        #     print(staff_member.status)
-        #     if str(staff_member.status) == "offline":
-        #         dm = await staff_member.create_dm()
-        #         await dm.send(str(member) + " möchte gemoved werden")
-
 bot.run(TOKEN)
