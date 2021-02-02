@@ -24,19 +24,22 @@ bot = commands.Bot(command_prefix=PREFIX, intents=INTENTS)
 #Config
 
 # Paste your discord token from http://discord.com/developers/applications
-TOKEN = 'YOUR_BOT_TOKEN_HERE'
+TOKEN = 'ODA1MTc3MDQwOTk1MjIxNTM0.YBXFjg.XZNRq8-gPN-4DVxGPo_ceEqAD3Q'
 
 # Change these variables for your Server
 # If you dont know where to find the Server ID, see this: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-
 
 # Paste the SERVER ID here
-server_id = YOUR_SERVER_ID_HERE
+server_id = 792468889707085856
 
 # Paste the ID of the channel, where you want users to join
-channel_id = YOUR_CHANNEL_ID_HERE
+channel_id = 793240226700722197
 
 # A list of all of your Staff Members seperated by ",". This may be replaced in a Future Version
-staff_ids = [STAFF_ID_01, STAFF_ID_02]
+staff_ids = [781869496759484426]
+
+# Whether the bot should use the staff_ids list, or build the list automatically based on the "Move Members" permission.
+custom_list = False
 
 # The message that is send to your staff members
 move_message = "{} is waiting"
@@ -51,11 +54,17 @@ async def on_ready():
     print(f'Logged in as: {bot.user.name}')
     print(f'With ID: {bot.user.id}')
     guild = bot.get_guild(server_id)
-    for staff_id in staff_ids:
-        staff_member = guild.get_member(staff_id)
-        if staff_member is not None and staff_member not in staff_members:
-            staff_members.append(staff_member)
-            print("Added {} to staff members".format(staff_member))
+    if custom_list:
+        for staff_id in staff_ids:
+            staff_member = guild.get_member(staff_id)
+            if staff_member is not None and staff_member not in staff_members:
+                staff_members.append(staff_member)
+                print("Added {} to staff members".format(staff_member))
+    else:
+        for user in guild.members:
+            if user.guild_permissions.move_members and not user.bot:
+                staff_members.append(user)
+                print("Added {} to staff members".format(user))
 
 
 @bot.command()
